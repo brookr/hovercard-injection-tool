@@ -1,0 +1,81 @@
+= Hovercard Injection Tool - Bettering twitter.com
+
+Twitter.com now uses "Hovercards" to show user data when you mouse-over a 
+@username. With this library, you can load your own custom content into these
+hovercards to make them behave any way you like.
+
+== It's Your Event
+
+Injection works by triggering a 'HIT_it' event when the hovercard is loaded, passing 
+in the @username for that card. Define your own event; it will be called each
+time a hovercard is displayed:
+
+$('.hovercard').bind('HIT_it', function(e, screen_name) {
+  //my code
+})
+
+== It's Your Data
+
+Your custom event can do anything you would like, but you probably want to
+stick some data based on that screen_name into the hovercard. Since jQuery
+is preloaded by twitter.com, you can easily overwrite the contents of the 
+div that is already injected with the html() function:
+
+  $('.hovercard').bind('HIT_it', function(e, screen_name) {
+    $('#HIT').html(
+      '<p>rah rah ah ah ah ' + screen_name + ' gah gah ooh la la</p>'
+    )
+  })
+
+Here is a (crude) way to get some relevant info from a remote server:
+
+  $('.hovercard').bind('HIT_it', function(e, screen_name) {
+    $('#HIT').html('<h3>K-Score Dump:</h3><div class="kscore"></div>')
+    $('#HIT .kscore').html(
+      '<iframe src="http://klout.com/api/twitter/1/klout/[YOUR-USER-KEY-HERE]/' + screen_name + '.js" height="25" width="150"> </iframe>'
+    )
+  })
+
+If the remote server supports JSONP, you can do away with the iframe. For a 
+complete description, see: http://www.ibm.com/developerworks/library/wa-aj-jsonp1/
+
+  
+== Use It Your Way
+
+You might want to work this into a greasemonky script or bookmarklet? It is 
+probably too long to fit into a straight bookmarklet, so you would need to 
+host your js file (that contains HIT combined with your event binding and 
+data processing). Once the files is hosted somewhere, you can build your
+bookmarklet (see the great instructions at http://betterexplained.com/articles/how-to-make-a-bookmarklet-for-your-web-application/).
+
+The bookmarklet could then be used by navigating to twitter.com and clicking
+the bookmarklet once to load in your script. All hovercards will then get your
+special treatment.
+
+== Testing
+
+The easiest way to use HIT is to paste it into a browser console. In Firefox
+(with Firebug) or a WebKit browser (Safari, Chrome), you can access a command-
+line interface that lets you run javascript directly. Pop that open, paste in
+the HIT code, and then start experimenting! You can simply re-paste or re-type
+your event binding as much as you'd like to keep tweaking it.
+
+= Other Stuff
+
+Author::  @brookr of @decielo
+License:: Original code Copyright 2010 by Brook Riggio.
+          Released under an MIT-style license.  See the LICENSE  file
+          included in the distribution.
+
+== Permission, License, Warranty
+
+Please, use this. Change it. Tweak it. Build on it.
+
+In return: let me know how you are using it? I'd love to hear your ideas.
+
+This software is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+purpose.
+
+  
