@@ -10,9 +10,13 @@ Injection works by triggering a 'HIT_it' event when the hovercard is loaded, pas
 in the @username for that card. Define your own event; it will be called each
 time a hovercard is displayed:
 
-$('.hovercard').bind('HIT_it', function(e, screen_name) {
-  //my code
-})
+  $('.hovercard').bind('HIT_it', function(e, screen_name) {
+    //my code
+  })
+
+Whenever you are done processing, hide the provided loading spinner:
+
+  $('#HIT-spinner').hide()
 
 == It's Your Data
 
@@ -25,15 +29,17 @@ div that is already injected with the html() function:
     $('#HIT').append(
       '<p>rah rah ah ah ah ' + screen_name + ' gah gah ooh la la</p>'
     )
+    $('#HIT-spinner').hide()
   })
 
 Here is a (crude) way to get some relevant info from a remote server:
 
   $('.hovercard').bind('HIT_it', function(e, screen_name) {
-    $('#HIT').append('<h3>K-Score Dump:</h3><div class="kscore"></div>')
-    $('#HIT .kscore').html(
-      '<iframe src="http://klout.com/api/twitter/1/klout/[YOUR-USER-KEY-HERE]/' + screen_name + '.js" height="25" width="150"> </iframe>'
+    $('#HIT').append('<h3>Recent Web-wide Activity:</h3><div id="goog"></div>')
+    $('#HIT #goog').html(
+      '<iframe src="http://www.google.com/gwt/x?u=http://www.google.com/search%3Fq%3D@' + screen_name + '" height="200" width="275"> </iframe>'
     )
+    $('#HIT-spinner').hide()
   })
 
 If the remote server supports JSONP, you can do away with the iframe. For a 

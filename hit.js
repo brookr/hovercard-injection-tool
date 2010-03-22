@@ -19,11 +19,11 @@ twttr.templates.hovercard_content = "<div class=\"hovercard-content-inner\"> \
       <p> \
     </div> \
     <div id=\"HIT\" class=\"description\"> \
-      <img src=\"/images/spinner.gif\" /> Loading bonus info... \
-      <script type=\"text/javascript\"> \
-        $('.hovercard').trigger('HIT_it', '{{screen_name}}') \
-      </script> \
+      <span id=\"HIT-spinner\"><img src=\"/images/spinner.gif\" /> Loading bonus info... </span>\
     </div> \
+    <script type=\"text/javascript\"> \
+      $('.hovercard').trigger('HIT_it', '{{screen_name}}') \
+    </script> \
     <div class=\"description description-inactive\"> \
       <div class=\"description-inner\"> \
         {{#website_text}}<p><strong>Web:</strong> <a href=\"{{website_url}}\" rel=\"nofollow\" target=\"_blank\">{{website_text}}</a></p>{{/website_text}} \
