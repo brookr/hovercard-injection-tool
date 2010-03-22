@@ -1,8 +1,8 @@
 = Hovercard Injection Tool - Bettering twitter.com
 
 Twitter.com now uses "Hovercards" to show user data when you mouse-over a 
-@username. With this library, you can load your own custom content into these
-hovercards to make them behave any way you like.
+@username. Using the Hovercard Injection Tool, you can load your own custom content into these
+hovercards to make them behave as you like.
 
 == It's Your Event
 
@@ -22,8 +22,8 @@ Whenever you are done processing, hide the provided loading spinner:
 
 Your custom event can do anything you would like, but you probably want to
 stick some data based on that screen_name into the hovercard. Since jQuery
-is preloaded by twitter.com, you can easily overwrite the contents of the 
-div that is already injected with the html() function:
+is preloaded by twitter.com, you can easily add to the contents of the 
+default HIT div that is already injected with the html() function:
 
   $('.hovercard').bind('HIT_it', function(e, screen_name) {
     $('#HIT').append(
@@ -52,7 +52,7 @@ You might want to work this into a greasemonky script or bookmarklet? It is
 probably too long to fit into a straight bookmarklet, so you would need to 
 host your js file (that contains HIT combined with your event binding and 
 data processing). Once the files is hosted somewhere, you can build your
-bookmarklet (see the great instructions at http://betterexplained.com/articles/how-to-make-a-bookmarklet-for-your-web-application/).
+bookmarklet (see the great instructions at BetterExplained.com[http://betterexplained.com/articles/how-to-make-a-bookmarklet-for-your-web-application/]).
 
 The bookmarklet could then be used by navigating to twitter.com and clicking
 the bookmarklet once to load in your script. All hovercards will then get your
@@ -63,12 +63,12 @@ special treatment.
 The easiest way to use HIT is to paste it into a browser console. In Firefox
 (with Firebug) or a WebKit browser (Safari, Chrome), you can access a command-
 line interface that lets you run javascript directly. Pop that open, paste in
-the HIT code, and then start experimenting! You can simply re-paste or re-type
-your event binding as much as you'd like to keep tweaking it.
+the HIT code, and then start experimenting! You can simply reload and re-enter
+your event binding as much as you'd need to keep tweaking it.
 
 = Other Stuff
 
-Author::  @brookr of @decielo
+Author::  @brookr[http://twitter.com/brookr] of @decielo[http://twitter.com/decielo]
 License:: Original code Copyright 2010 by Brook Riggio.
           Released under an MIT-style license.  See the LICENSE  file
           included in the distribution.
