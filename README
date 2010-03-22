@@ -22,7 +22,7 @@ is preloaded by twitter.com, you can easily overwrite the contents of the
 div that is already injected with the html() function:
 
   $('.hovercard').bind('HIT_it', function(e, screen_name) {
-    $('#HIT').html(
+    $('#HIT').append(
       '<p>rah rah ah ah ah ' + screen_name + ' gah gah ooh la la</p>'
     )
   })
@@ -30,7 +30,7 @@ div that is already injected with the html() function:
 Here is a (crude) way to get some relevant info from a remote server:
 
   $('.hovercard').bind('HIT_it', function(e, screen_name) {
-    $('#HIT').html('<h3>K-Score Dump:</h3><div class="kscore"></div>')
+    $('#HIT').append('<h3>K-Score Dump:</h3><div class="kscore"></div>')
     $('#HIT .kscore').html(
       '<iframe src="http://klout.com/api/twitter/1/klout/[YOUR-USER-KEY-HERE]/' + screen_name + '.js" height="25" width="150"> </iframe>'
     )
